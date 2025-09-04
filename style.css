@@ -1,0 +1,380 @@
+/* CSS reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	scroll-behavior: smooth;
+	--primary-color: #8e2de2;
+	--secondary-color: #8f8f8f;
+	--background-color: #131313;
+	--text-color: #d9d9d9;
+	--border-radius: 10px;
+	--spacing: 0.25rem;
+	--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.xxl-font {
+	font-size: 3rem;
+}
+.xl-font {
+	font-size: 2.25rem;
+}
+
+h1,
+h2,
+h3,
+p {
+	cursor: default;
+}
+
+h2 {
+	--border-right: 6px;
+	--animation-color: var(--primary-color);
+	letter-spacing: 3px;
+	position: relative;
+	width: max-content;
+}
+/* this is the text, when you hover on button */
+.hover-text {
+	position: absolute;
+	box-sizing: border-box;
+	content: attr(data-text);
+	color: var(--animation-color);
+	width: 0%;
+	inset: 0;
+	border-right: var(--border-right) solid var(--animation-color);
+	overflow: hidden;
+	transition: 1s;
+	-webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+h2:hover .hover-text {
+	width: 100%;
+}
+
+body {
+	font-family: var(--font-sans);
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+main {
+	position: relative;
+}
+
+.flex {
+	display: flex;
+	gap: 20px;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.wrapper {
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 20px 20px;
+}
+/* Top effekt */
+.top-container {
+	pointer-events: none;
+	top: -50px;
+	height: calc(var(--spacing) * 72);
+	width: 100%;
+	position: absolute;
+	overflow: hidden;
+}
+.top-content {
+	height: 100%;
+	position: relative;
+}
+.top-effect-wrapper {
+	z-index: -1;
+	opacity: 0.5;
+	width: 300%;
+	height: 120%;
+	position: absolute;
+	left: -100%;
+	overflow: hidden;
+	mask-image: radial-gradient(farthest-side at 50% -175%, rgb(0, 0, 0), rgba(0, 0, 0, 0) 87%);
+}
+.top-effect-ray-wrapper {
+	inset: 0;
+	align-items: center;
+	display: flex;
+	position: absolute;
+	mask-image: linear-gradient(
+			45deg,
+			rgba(0, 0, 0, 0) 35%,
+			rgba(0, 0, 0, 0.9) 40%,
+			rgba(0, 0, 0, 0) 45%,
+			rgba(0, 0, 0, 0.6) 50%,
+			rgba(0, 0, 0, 0) 55%,
+			rgba(0, 0, 0, 0.9) 60%,
+			rgba(0, 0, 0, 0) 65%
+		),
+		linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 75%);
+	mask-position: 50% 0px, 0px 0px;
+	mask-size: 200%, auto;
+}
+
+.top-effect-element {
+	aspect-ratio: 1 / 1;
+	width: 120%;
+	position: absolute;
+	left: -10%;
+	filter: saturate(0.8) brightness(1.2);
+	background: conic-gradient(
+		rgb(47, 194, 101) 0deg,
+		rgb(42, 162, 114) 20%,
+		rgb(54, 95, 152) 40%,
+		rgb(110, 107, 208) 60%,
+		rgb(54, 95, 152) 80%,
+		rgb(42, 162, 114) 90%,
+		rgb(47, 194, 101) 100%
+	);
+	animation: spin 14s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-1turn);
+	}
+}
+
+/* Header section */
+header {
+	/* background-color: #13131376;
+	backdrop-filter: blur(10px); */
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+header div {
+	justify-content: space-between;
+	align-items: center;
+}
+
+header img {
+	max-height: 50px;
+	transition: all 0.3s ease;
+}
+
+header img:hover {
+	transform: scale(1.1);
+}
+
+header ul {
+	list-style: none;
+}
+
+header a {
+	color: var(--text-color);
+	text-decoration: none;
+}
+
+header li {
+	transition: all 0.3s ease;
+}
+
+header li:hover {
+	transform: scale(1.1);
+}
+a {
+	text-decoration: none;
+}
+
+/* Hero section */
+.gitter {
+	height: 100vh;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	--color: rgba(114, 114, 114, 0.3);
+	background-color: var(--background-color);
+	background-image: linear-gradient(
+			0deg,
+			transparent 24%,
+			var(--color) 25%,
+			var(--color) 26%,
+			transparent 27%,
+			transparent 74%,
+			var(--color) 75%,
+			var(--color) 76%,
+			transparent 77%,
+			transparent
+		),
+		linear-gradient(
+			90deg,
+			transparent 24%,
+			var(--color) 25%,
+			var(--color) 26%,
+			transparent 27%,
+			transparent 74%,
+			var(--color) 75%,
+			var(--color) 76%,
+			transparent 77%,
+			transparent
+		);
+	background-size: 55px 55px;
+	mask-image: radial-gradient(#000 0%, transparent 64%);
+}
+.hero {
+	height: 100vh;
+	position: relative;
+	justify-content: center;
+	z-index: 100;
+}
+
+.hero-path {
+	width: 100%;
+	position: absolute;
+	top: 5rem;
+	left: 0;
+}
+.hero-path path {
+	animation: dash 5s linear infinite;
+}
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.pb-box {
+	width: 60px;
+	height: 60px;
+	border-radius: var(--border-radius);
+	border: 2px solid var(--primary-color);
+	overflow: hidden;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: translateY(5px);
+	}
+}
+
+.hej-bar-content {
+	gap: 5px;
+}
+.ledig {
+	align-items: center;
+	gap: 5px;
+}
+.ledig-indikator {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: greenyellow;
+	filter: drop-shadow(0 0 2px greenyellow);
+	margin-right: 8px;
+}
+
+.ledig .group {
+	cursor: pointer;
+	position: relative;
+	height: 25px;
+	gap: 5px;
+	transition: all 0.5s ease;
+	color: var(--secondary-color);
+}
+
+.ledig:hover {
+	.group {
+		transform: translateY(-25px);
+	}
+	.font-animation {
+		opacity: 1;
+	}
+	.font-underline {
+		opacity: 0;
+	}
+}
+.font-underline {
+	border-bottom: 2px dashed var(--secondary-color);
+	transition: all 0.3s ease;
+	pointer-events: none;
+}
+.font-animation {
+	transition: all 0.3s ease;
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* UI */
+
+/* Barchart */
+.barchart ul {
+	list-style: none;
+	display: flex;
+	align-items: flex-end;
+	gap: 1ch;
+	block-size: 100px;
+	padding: 0;
+	margin: 0;
+}
+
+.barchart li {
+	opacity: 0.5;
+	inline-size: 3ch;
+	border-radius: var(--border-radius);
+	height: calc(var(--height) * 1px);
+	background: color-mix(in hsl, var(--primary-color), greenyellow calc(var(--height) * 1%));
+}
+
+/* Færdigheder */
+
+.færdigheder h3 {
+	color: var(--secondary-color);
+}
+
+.færdigheder ul {
+	list-style: none;
+	gap: 0.5rem 1.75rem;
+	flex-wrap: wrap;
+}
+
+.færdigheder li {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.færdigheder li:hover {
+	img {
+		transform: scale(1.1) rotate(-5deg);
+	}
+}
+
+.færdigheder img {
+	aspect-ratio: 1 / 1;
+	height: 37px;
+	margin-right: 0.7rem;
+	filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.206));
+	transition: all 0.3s ease;
+}
+
+.færdigheder .group {
+	gap: 3px;
+}
+
+.færdigheder p {
+	font-size: 0.875rem;
+	color: var(--secondary-color);
+}
