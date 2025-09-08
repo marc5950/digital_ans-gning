@@ -1,6 +1,31 @@
 <section id="ui" class="ui wrapper flex-col">
-				<h2>UI</h2>
-				<div class="barchart">
-					<ul></ul>
-				</div>
-			</section>
+  <h2>UI</h2>
+  <div class="barchart">
+    <ul></ul>
+  </div>
+</section>
+
+<style>
+  /* Barchart */
+  .barchart ul {
+    list-style: none;
+    display: flex;
+    align-items: flex-end;
+    gap: 1ch;
+    block-size: 100px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .barchart li {
+    opacity: 0.5;
+    inline-size: 3ch;
+    border-radius: var(--border-radius);
+    height: calc(var(--height) * 1px);
+    background: color-mix(
+      in hsl,
+      var(--primary-color),
+      greenyellow calc(var(--height) * 1%)
+    );
+  }
+</style>
