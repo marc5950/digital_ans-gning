@@ -14,7 +14,7 @@ function update() {
 	// tilføjer et nyt random tal til arrayet
 	arr.push(Math.floor(Math.random() * 100) + 1);
 	// hvis arrayet er længere end 20 fjernes det ældste tal
-	if (arr.length === 20) {
+	if (arr.length === 21) {
 		arr.shift();
 	}
 	// laver et li element for hvert tal i arrayet
