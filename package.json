@@ -9,7 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.5"
+    "astro": "^5.13.5",
+    "particles.js": "^2.0.0"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
