@@ -1,0 +1,76 @@
+---
+import Particles from "astro-particles";
+import type { ISourceOptions } from "tsparticles-engine";
+
+const options: ISourceOptions = {
+  fullScreen: {
+    enable: false,
+    zIndex: -1,
+  },
+  interactivity: {
+    detect_on: "window",
+    events: {
+      onhover: {
+        enable: true,
+        mode: "bubble",
+        parallax: { enable: true, force: 80, smooth: 10 },
+      },
+      resize: true,
+    },
+    modes: {
+      bubble: { distance: 2, duration: 2, opacity: 1, size: 2, speed: 1 },
+    },
+  },
+  particles: {
+    color: { value: "#ffffff" },
+    move: {
+      size: true,
+      direction: "none",
+      enable: true,
+      out_mode: "out",
+      random: true,
+      speed: 0.3,
+      straight: false,
+    },
+    number: { density: { enable: true, value_area: 800 }, value: 20 },
+    opacity: {
+      anim: { enable: true, opacity_min: 0, speed: 0.3, sync: false },
+      random: true,
+      value: 1,
+    },
+    size: {
+      anim: { enable: true, size_min: 0.3, speed: 0.3, sync: false },
+      random: true,
+      value: 3,
+    },
+  },
+  retina_detect: true,
+};
+---
+
+<script>
+  import { tsParticles } from "tsparticles-engine";
+  import { loadSlim } from "tsparticles-slim"; // Ændret til loadSlim
+
+  declare global {
+    interface Window {
+      particlesInit: any;
+      particlesLoaded: any;
+    }
+  }
+
+  window.particlesInit = async function (engine: any) {
+    await loadSlim(engine); // Bruger loadSlim i stedet
+  };
+
+  window.particlesLoaded = function (container: any) {
+    console.log("Particles loaded!");
+  };
+</script>
+
+<Particles
+  id="tsparticles"
+  options={options}
+  init="particlesInit"
+  loaded="particlesLoaded"
+/>
