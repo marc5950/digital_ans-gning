@@ -105,7 +105,7 @@ import bitmoji from "../assets/bitmoji_pb.png";
   }
 
   .pb-box {
-    width: 60px;
+    width: clamp(30px, 10vw, 80px);
     height: auto;
     aspect-ratio: 1/1;
     border-radius: var(--border-radius);
@@ -168,13 +168,6 @@ import bitmoji from "../assets/bitmoji_pb.png";
     }
   }
 
-  @media (min-width: 800px) {
-    .ledig:hover {
-      .group {
-        transform: translateY(-2.1em);
-      }
-    }
-  }
   .font-underline {
     border-bottom: 2px dashed var(--secondary-color);
     transition: all 0.3s ease;
