@@ -117,15 +117,21 @@ import bitmoji from "../assets/bitmoji_footer.png";
   }
 
   footer .btns {
-    justify-content: center;
+    justify-content: end;
     flex-wrap: wrap;
     width: 80%;
+  }
+
+  @media (max-width: 400px) {
+    footer .btns {
+      justify-content: start;
+    }
   }
 
   footer img {
     position: absolute;
     left: 0;
-    bottom: 0.5rem;
+    top: 8rem;
     height: 200px;
     width: auto;
     pointer-events: none;

@@ -106,7 +106,8 @@ import bitmoji from "../assets/bitmoji_pb.png";
 
   .pb-box {
     width: 60px;
-    height: 60px;
+    height: auto;
+    aspect-ratio: 1/1;
     border-radius: var(--border-radius);
     border: 2px solid var(--primary-color);
     overflow: hidden;
@@ -128,7 +129,6 @@ import bitmoji from "../assets/bitmoji_pb.png";
   }
 
   .hej-bar {
-    align-items: top;
     justify-content: space-between;
   }
   .hej-bar-content {
@@ -158,13 +158,21 @@ import bitmoji from "../assets/bitmoji_pb.png";
 
   .ledig:hover {
     .group {
-      transform: translateY(-25px);
+      transform: translateY(-1.9em);
     }
     .font-animation {
       opacity: 1;
     }
     .font-underline {
       opacity: 0;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .ledig:hover {
+      .group {
+        transform: translateY(-2.1em);
+      }
     }
   }
   .font-underline {
@@ -176,5 +184,11 @@ import bitmoji from "../assets/bitmoji_pb.png";
     transition: all 0.3s ease;
     opacity: 0;
     pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    .hej-bar {
+      flex-direction: column-reverse;
+    }
   }
 </style>
