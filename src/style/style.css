@@ -99,8 +99,8 @@ button {
 button:hover {
   background-color: var(--primary-color);
   border: var(--primary-color) solid 3px;
-  transform: scale(1.1);
-  letter-spacing: 1.5px;
+  transform: scale(1.05);
+  letter-spacing: 1.3px;
   color: var(--btn--hover-color);
   path {
     fill: var(--btn--hover-color);

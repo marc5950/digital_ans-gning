@@ -1,21 +1,534 @@
 <section id="ui" class="ui wrapper flex-col">
   <h2>UI</h2>
-  <div class="barchart">
-    <ul></ul>
+  <div class="ui-grid">
+    <!-- Barchart - Medium størrelse -->
+    <div class="ui-item medium">
+      <div class="ui-header">
+        <h3>Live Data Visualization</h3>
+        <p>Animeret bar chart med real-time data</p>
+      </div>
+      <div class="ui-content">
+        <div class="barchart">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Picker - Small størrelse -->
+    <div class="ui-item small">
+      <div class="ui-header">
+        <h3>Color Picker</h3>
+        <p>Interaktiv farve-vælger</p>
+      </div>
+      <div class="ui-content">
+        <div class="color-picker">
+          <label class="visually-hidden" for="colorInput">Vælg en farve:</label>
+          <input type="color" id="colorInput" value="#8e2de2" />
+          <div class="color-display" id="colorDisplay"></div>
+          <span class="color-value" id="colorValue">#8e2de2</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button Showcase - Small størrelse -->
+    <div class="ui-item small">
+      <div class="ui-header">
+        <h3>Button States</h3>
+        <p>Hover & click effekter</p>
+      </div>
+      <div class="ui-content">
+        <div class="button-showcase">
+          <button class="demo-btn primary">Primary</button>
+          <button class="demo-btn secondary">Secondary</button>
+          <button class="demo-btn outline">Outline</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Bar - Medium størrelse -->
+    <div class="ui-item medium">
+      <div class="ui-header">
+        <h3>Progress Animation</h3>
+        <p>Animeret progress bar med steps</p>
+      </div>
+      <div class="ui-content">
+        <div class="progress-demo">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-steps">
+            <div class="step active">Design</div>
+            <div class="step">Development</div>
+            <div class="step">Testing</div>
+            <div class="step">Deploy</div>
+          </div>
+          <div class="progress-btn-wrapper">
+            <button class="progress-btn" id="progressBtn">Start Progress</button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Hover Effect - Large størrelse -->
+    <div class="ui-item large">
+      <div class="ui-header">
+        <h3>Card Interactions</h3>
+        <p>Hover effects & micro-animations</p>
+      </div>
+      <div class="ui-content">
+        <div class="card-demo">
+          <div class="demo-card">
+            <div class="card-icon">🚀</div>
+            <h4>Hover mig!</h4>
+            <p>Se hvad der sker når du hover over dette kort</p>
+            <div class="card-stats">
+              <span class="stat">
+                <span class="value">98%</span>
+                <span class="label">Performance</span>
+              </span>
+              <span class="stat">
+                <span class="value">100%</span>
+                <span class="label">Accessibility</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle Switch - Small størrelse -->
+    <div class="ui-item small">
+      <div class="ui-header">
+        <h3>Toggle Switch</h3>
+        <p>Custom styled checkbox</p>
+      </div>
+      <div class="ui-content">
+        <div class="toggle-demo">
+          <label class="toggle-switch" for="toggleInput">
+            <span class="visually-hidden">Toggle switch</span>
+            <input type="checkbox" id="toggleInput" />
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label" id="toggleLabel">Off</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<style></style>
+<style>
+  /* UI Grid Layout */
+  .ui-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  /* Accessibility */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .ui-item {
+    display: flex;
+    flex-direction: column;
+    background: var(--background-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .ui-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(142, 45, 226, 0.15);
+    border-color: rgba(142, 45, 226, 0.3);
+  }
+
+  /* Grid Item Sizes */
+  .ui-item.small {
+    grid-column: span 1;
+  }
+
+  .ui-item.medium {
+    grid-column: span 2;
+  }
+
+  .ui-item.large {
+    grid-column: span 3;
+  }
+
+  /* Responsive grid */
+  @media (max-width: 1200px) {
+    .ui-item.large {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ui-grid {
+      grid-template-columns: 1fr;
+    }
+    .ui-item.small,
+    .ui-item.medium,
+    .ui-item.large {
+      grid-column: span 1;
+    }
+  }
+
+  /* UI Item Content */
+  .ui-header {
+    padding: 1rem 1rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .ui-header h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+
+  .ui-header p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+  }
+
+  .ui-content {
+    padding: 1rem;
+    flex: 1 1 0;
+  }
+
+  /* Color Picker */
+  .color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .color-picker input[type="color"] {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--text-color);
+    background: none;
+    padding: 0;
+    overflow: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .color-picker input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+  }
+
+  .color-picker input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+  }
+
+  .color-picker input[type="color"]::-moz-color-swatch {
+    border: none;
+    border-radius: 50%;
+  }
+
+  .color-display {
+    width: 100%;
+    height: 30px;
+    border-radius: 6px;
+    background: var(--primary-color);
+    transition: background 0.3s ease;
+  }
+
+  .color-value {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-color);
+  }
+
+  /* Button Showcase */
+  .button-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .demo-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 2px solid;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .demo-btn.primary {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+
+  .demo-btn.primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+  }
+
+  .demo-btn.secondary {
+    background: var(--text-color);
+    color: var(--background-color);
+    border-color: var(--text-color);
+  }
+
+  .demo-btn.secondary:hover {
+    background: transparent;
+    color: var(--text-color);
+  }
+
+  .demo-btn.outline {
+    background: transparent;
+    color: var(--text-color);
+    border-color: var(--secondary-color);
+  }
+
+  .demo-btn.outline:hover {
+    background: var(--text-color);
+    color: var(--background-color);
+    border-color: var(--text-color);
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  /* Progress Demo */
+  .progress-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary-color), #4a90e2);
+    transition: width 0.3s ease;
+  }
+
+  .progress-steps {
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .step {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .step.active {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .progress-btn-wrapper {
+    display: flex;
+    flex: 1 1 0;
+  }
+  .progress-btn {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+
+  .progress-btn:hover {
+    background: #7a1cc7;
+    transform: translateY(-1px);
+  }
+
+  /* Card Demo */
+  .card-demo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .demo-card {
+    background: linear-gradient(135deg, var(--primary-color), #4a90e2);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    max-width: 200px;
+  }
+
+  .demo-card:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 10px 30px rgba(142, 45, 226, 0.3);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .demo-card:hover .card-icon {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  .demo-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .demo-card p {
+    margin: 0 0 1rem 0;
+    font-size: 0.875rem;
+    opacity: 0.9;
+  }
+
+  .card-stats {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .value {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  /* Toggle Switch */
+  .toggle-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--secondary-color);
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+  }
+
+  .toggle-label {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+</style>
 <style is:global>
   /* Barchart */
+  .barchart {
+    height: 100%;
+    min-height: 100px;
+  }
   .barchart ul {
     list-style: none;
     display: flex;
     align-items: flex-end;
-    gap: 1ch;
-    block-size: 100px;
+    gap: 0.75rem;
+    block-size: 100%;
     padding: 0;
     margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .barchart ul {
+      gap: 0.5rem !important;
+    }
   }
 
   .barchart li {
@@ -30,4 +543,135 @@
     );
   }
 </style>
-<script src="../script/barchart.js"></script>
+<script>
+  // Barchart
+  const barchartList = document.querySelector(".barchart ul");
+
+  if (barchartList) {
+    // Array til at gemme tal
+    const barchartArr: number[] = [];
+
+    // opdaterer listen hvert 200ms
+    const barchartInterval = setInterval(updateBarchart, 200);
+
+    // funktion til at opdatere listen
+    function updateBarchart() {
+      if (!barchartList) return;
+
+      // rydder listen
+      barchartList.innerHTML = "";
+      // tilføjer et nyt random tal til arrayet
+      barchartArr.push(Math.floor(Math.random() * 100) + 1);
+      // hvis arrayet er længere end 20 fjernes det ældste tal
+      if (barchartArr.length === 21) {
+        barchartArr.shift();
+      }
+      // laver et li element for hvert tal i arrayet
+      barchartArr.forEach((num) => {
+        const li = document.createElement("li");
+        li.style.setProperty("--height", num.toString());
+        // tilføj li elementet til listen som et barn til barchartList (ul)
+        barchartList.appendChild(li);
+      });
+    }
+
+    // Cleanup når siden forlades
+    window.addEventListener("beforeunload", () => {
+      clearInterval(barchartInterval);
+    });
+  }
+
+  // Color Picker
+  const colorInput = document.getElementById("colorInput");
+  const colorDisplay = document.getElementById("colorDisplay");
+  const colorValue = document.getElementById("colorValue");
+
+  if (colorInput && colorDisplay && colorValue) {
+    colorInput.addEventListener("input", (e) => {
+      const target = e.target;
+      if (target && target instanceof HTMLInputElement) {
+        const color = target.value;
+        colorDisplay.style.background = color;
+        colorValue.textContent = color;
+      }
+    });
+  }
+
+  if (colorInput && colorDisplay && colorValue) {
+    colorInput.addEventListener("input", (e) => {
+      const target = e.target;
+      if (target && target instanceof HTMLInputElement) {
+        const color = target.value;
+        colorDisplay.style.background = color;
+        colorValue.textContent = color;
+      }
+    });
+  }
+
+  // Progress Bar
+  const progressBtn = document.getElementById("progressBtn");
+  const progressFill = document.getElementById("progressFill");
+
+  if (progressBtn && progressFill) {
+    let isRunning = false;
+
+    progressBtn.addEventListener("click", () => {
+      if (isRunning) return;
+
+      isRunning = true;
+      progressBtn.textContent = "Running...";
+      if (progressBtn instanceof HTMLButtonElement) {
+        progressBtn.disabled = true;
+      }
+
+      let progress = 0;
+      const steps = document.querySelectorAll(".step");
+
+      // Reset
+      steps.forEach((step) => step.classList.remove("active"));
+      progressFill.style.width = "0%";
+
+      const interval = setInterval(() => {
+        progress += 1;
+        progressFill.style.width = progress + "%";
+
+        // Update step indicators
+        const stepIndex = Math.floor((progress - 1) / 25);
+        if (stepIndex >= 0 && stepIndex < steps.length) {
+          steps[stepIndex].classList.add("active");
+        }
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            isRunning = false;
+            progressBtn.textContent = "Start Progress";
+            if (progressBtn instanceof HTMLButtonElement) {
+              progressBtn.disabled = false;
+            }
+
+            // Reset after delay
+            setTimeout(() => {
+              steps.forEach((step) => step.classList.remove("active"));
+              steps[0].classList.add("active");
+              progressFill.style.width = "0%";
+            }, 2000);
+          }, 1000);
+        }
+      }, 50);
+    });
+  }
+
+  // Toggle Switch
+  const toggleInput = document.getElementById("toggleInput");
+  const toggleLabel = document.getElementById("toggleLabel");
+
+  if (toggleInput && toggleLabel) {
+    toggleInput.addEventListener("change", (e) => {
+      const target = e.target;
+      if (target && target instanceof HTMLInputElement) {
+        toggleLabel.textContent = target.checked ? "On" : "Off";
+      }
+    });
+  }
+</script>
