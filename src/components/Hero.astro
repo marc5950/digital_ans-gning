@@ -11,11 +11,7 @@ import bitmoji from "../assets/bitmoji_pb.webp";
         </div>
         <div class="hej-bar-content flex-col">
           <h1>Hey, mit navn er Marcus</h1>
-          <a
-            target="_blank"
-            href="mailto:marcuswagner5950@gmail.com"
-            class="ledig flex"
-          >
+          <a href="#kontakt" class="ledig flex">
             <div class="ledig-indikator"></div>
             <p class="group flex-col">
               <span class="font-underline">Ledig som praktikant</span>
@@ -58,15 +54,20 @@ import bitmoji from "../assets/bitmoji_pb.webp";
       </label>
     </div>
     <p style="max-width: 60ch">
-      Jeg bor i Ballerup, og jeg studerer til multimediedesigner på
-      Erhvervsakademi København. Jeg leder efter en praktikplads, hvor jeg kan
-      udfordre mig selv og bidrage til jeres team med kompetencer inden for
-      UX/UI og frontend-udvikling. Se mine projekter her på siden.
+      Jeg bor i Ballerup, og jeg studerer til <b>multimediedesigner</b> på Erhvervsakademi
+      København. Jeg leder efter en praktikplads, hvor jeg kan udfordre mig selv
+      og bidrage til jeres team med kompetencer inden for
+      <b>UX/UI og frontend-udvikling</b>. Se mine projekter og programkendskaber
+      her på siden.
+    </p>
+    <p>
+      Praktikperioden er <b
+        >10 uger, 37 t/ugen (ulønnet): 19. januar – 27. marts
+      </b>
     </p>
   </section>
-</div>
 
-<!-- <style>
+  <!-- <style>
   .hero-path {
     width: 100%;
     height: auto;
@@ -93,95 +94,96 @@ import bitmoji from "../assets/bitmoji_pb.webp";
     animation: dash 5s linear infinite;
   }
 </style> -->
-<style>
-  .hero-wrapper {
-    position: relative;
-  }
-  .hero {
-    height: 100vh;
-    position: relative;
-    justify-content: center;
-    z-index: 100;
-  }
-
-  .pb-box {
-    width: clamp(30px, 10vw, 80px);
-    height: auto;
-    aspect-ratio: 1/1;
-    border-radius: var(--border-radius);
-    border: 2px solid var(--primary-color);
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: translateY(7px);
+  <style>
+    .hero-wrapper {
+      position: relative;
     }
-  }
-  .pb-box:hover {
-    animation: rotate 0.5s linear infinite;
-  }
-
-  @keyframes rotate {
-    to {
-      transform: translate3d(0, 0, 60px);
+    .hero {
+      height: 100vh;
+      position: relative;
+      justify-content: center;
+      z-index: 100;
     }
-  }
 
-  .hej-bar {
-    justify-content: space-between;
-  }
-  .hej-bar-content {
-    gap: 5px;
-  }
-  .ledig {
-    align-items: center;
-    gap: 5px;
-  }
-  .ledig-indikator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: greenyellow;
-    filter: drop-shadow(0 0 2px greenyellow);
-    margin-right: 8px;
-  }
+    .pb-box {
+      width: clamp(30px, 10vw, 80px);
+      height: auto;
+      aspect-ratio: 1/1;
+      border-radius: var(--border-radius);
+      border: 2px solid var(--primary-color);
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translateY(7px);
+      }
+    }
+    .pb-box:hover {
+      animation: rotate 0.5s linear infinite;
+    }
 
-  .ledig .group {
-    cursor: pointer;
-    position: relative;
-    height: 25px;
-    gap: 5px;
-    transition: all 0.5s ease;
-    color: var(--secondary-color);
-  }
+    @keyframes rotate {
+      to {
+        transform: translate3d(0, 0, 60px);
+      }
+    }
 
-  .ledig:hover {
-    .group {
-      transform: translateY(-1.9em);
+    .hej-bar {
+      justify-content: space-between;
+    }
+    .hej-bar-content {
+      gap: 5px;
+    }
+    .ledig {
+      align-items: center;
+      gap: 5px;
+    }
+    .ledig-indikator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: greenyellow;
+      filter: drop-shadow(0 0 2px greenyellow);
+      margin-right: 8px;
+    }
+
+    .ledig .group {
+      cursor: pointer;
+      position: relative;
+      height: 25px;
+      gap: 5px;
+      transition: all 0.5s ease;
+      color: var(--secondary-color);
+    }
+
+    .ledig:hover {
+      .group {
+        transform: translateY(-1.9em);
+      }
+      .font-animation {
+        opacity: 1;
+      }
+      .font-underline {
+        opacity: 0;
+      }
+    }
+
+    .font-underline {
+      border-bottom: 2px dashed var(--secondary-color);
+      transition: all 0.3s ease;
+      pointer-events: none;
     }
     .font-animation {
-      opacity: 1;
-    }
-    .font-underline {
+      transition: all 0.3s ease;
       opacity: 0;
+      pointer-events: none;
     }
-  }
 
-  .font-underline {
-    border-bottom: 2px dashed var(--secondary-color);
-    transition: all 0.3s ease;
-    pointer-events: none;
-  }
-  .font-animation {
-    transition: all 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  @media (max-width: 600px) {
-    .hej-bar {
-      flex-direction: column-reverse;
+    @media (max-width: 600px) {
+      .hej-bar {
+        flex-direction: column-reverse;
+      }
     }
-  }
-</style>
+  </style>
+</div>
