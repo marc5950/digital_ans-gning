@@ -456,10 +456,11 @@
 
       /* Glass Effect Card */
       .demo-card.glass {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(var(--glass-bg), 0.1);
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(var(--glass-border), 0.2);
+        box-shadow: 0 8px 32px rgba(var(--glass-shadow), 0.1);
+        color: var(--text-color);
       }
 
       .demo-card.glass::before {
@@ -472,7 +473,7 @@
         background: linear-gradient(
           45deg,
           transparent,
-          rgba(255, 255, 255, 0.1),
+          rgba(var(--glass-highlight), 0.1),
           transparent
         );
         opacity: 0;
@@ -481,8 +482,8 @@
 
       .demo-card.glass:hover {
         transform: translateY(-8px) rotateX(5deg);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 20px 40px rgba(var(--glass-shadow), 0.2);
+        border-color: rgba(var(--glass-border), 0.4);
       }
 
       .demo-card.glass:hover::before {
@@ -492,7 +493,6 @@
       .demo-card.glass:hover .card-icon {
         transform: scale(1.1) rotateY(180deg);
       }
-
       /* Neon Effect Card */
       .demo-card.neon {
         background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
@@ -564,16 +564,15 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.6),
+          rgba(var(--glass-border), 0.6),
           transparent
         );
-        box-shadow: 0 1px 3px rgba(255, 255, 255, 0.2);
       }
-
       .neon-divider {
         background: linear-gradient(90deg, transparent, #00ffff, transparent);
-        box-shadow: 0 0 10px #00ffff;
+        box-shadow: 0 0 20px #00ffff;
         transition: all 0.3s ease;
+        border-radius: 10px;
       }
 
       .demo-card.neon:hover .neon-divider {
