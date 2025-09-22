@@ -236,9 +236,83 @@ main {
   }
 }
 
-/* Custom Cursor */
-* {
-  cursor: none !important;
+/* Custom Cursor - Only for devices with a mouse */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-out;
+    mix-blend-mode: exclusion;
+    background: transparent;
+  }
+
+  .custom-cursor::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-out;
+  }
+
+  .custom-cursor.hover {
+    width: 45px;
+    height: 45px;
+    border-color: var(--primary-color);
+  }
+
+  .custom-cursor.hover::before {
+    width: 20px;
+    height: 20px;
+  }
+
+  .custom-cursor.click {
+    width: 25px;
+    height: 25px;
+  }
+
+  .custom-cursor.click::before {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* When both hover and click are active */
+  .custom-cursor.hover.click {
+    width: 35px;
+    height: 35px;
+  }
+
+  .custom-cursor.hover.click::before {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* For touch devices - show normal cursors */
+@media (hover: none) or (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
 }
 
 .custom-cursor {
