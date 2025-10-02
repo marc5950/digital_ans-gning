@@ -253,9 +253,12 @@ main {
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: all 0.2s ease-out;
+    transition:
+      width 0.15s ease-out,
+      height 0.15s ease-out;
     mix-blend-mode: exclusion;
     background: transparent;
+    will-change: transform;
   }
 
   .custom-cursor::before {

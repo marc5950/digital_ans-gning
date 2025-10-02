@@ -9,15 +9,30 @@ const hasHover = window.matchMedia(
 if (cursor && hasHover) {
   let mouseX = 0;
   let mouseY = 0;
+  let isMoving = false;
 
-  // Update mouse position and cursor position
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+  // Optimized cursor movement with requestAnimationFrame
+  function updateCursorPosition() {
+    if (isMoving) {
+      cursor.style.transform = `translate(${mouseX - 15}px, ${mouseY - 15}px)`;
+      isMoving = false;
+    }
+    requestAnimationFrame(updateCursorPosition);
+  }
 
-    cursor.style.left = mouseX + "px";
-    cursor.style.top = mouseY + "px";
-  });
+  // Start the animation loop
+  updateCursorPosition();
+
+  // Throttled mousemove event
+  document.addEventListener(
+    "mousemove",
+    (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      isMoving = true;
+    },
+    { passive: true },
+  );
 
   // Hover effects for interactive elements
   const hoverElements = [
@@ -43,43 +58,68 @@ if (cursor && hasHover) {
     return element.matches(selector);
   }
 
-  // Add hover effects
-  function addHoverEffects() {
-    const elements = document.querySelectorAll(hoverElements);
+  // Optimized hover effects with event delegation
+  let isHovering = false;
 
-    elements.forEach((element) => {
-      element.addEventListener("mouseenter", () => {
-        cursor.classList.add("hover");
-      });
-
-      element.addEventListener("mouseleave", () => {
-        cursor.classList.remove("hover");
-      });
-    });
+  function updateHoverState(shouldHover) {
+    if (shouldHover !== isHovering) {
+      isHovering = shouldHover;
+      cursor.classList.toggle("hover", shouldHover);
+    }
   }
 
-  // Initialize hover effects when DOM is ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", addHoverEffects);
-  } else {
-    addHoverEffects();
-  }
+  // Use optimized event delegation
+  document.addEventListener(
+    "mouseover",
+    (e) => {
+      if (elementMatches(e.target, hoverElements)) {
+        updateHoverState(true);
+      }
+    },
+    { passive: true },
+  );
 
-  // Click effect
-  document.addEventListener("mousedown", () => {
-    cursor.classList.add("click");
-  });
+  document.addEventListener(
+    "mouseout",
+    (e) => {
+      if (elementMatches(e.target, hoverElements)) {
+        updateHoverState(false);
+      }
+    },
+    { passive: true },
+  );
 
-  document.addEventListener("mouseup", () => {
-    cursor.classList.remove("click");
-  });
+  // Optimized click effects
+  document.addEventListener(
+    "mousedown",
+    () => {
+      cursor.classList.add("click");
+    },
+    { passive: true },
+  );
+
+  document.addEventListener(
+    "mouseup",
+    () => {
+      cursor.classList.remove("click");
+    },
+    { passive: true },
+  );
 
   // Hide cursor when it leaves the window
-  document.addEventListener("mouseleave", () => {
-    cursor.style.opacity = "0";
-  });
+  document.addEventListener(
+    "mouseleave",
+    () => {
+      cursor.style.opacity = "0";
+    },
+    { passive: true },
+  );
 
-  document.addEventListener("mouseenter", () => {
-    cursor.style.opacity = "1";
-  });
+  document.addEventListener(
+    "mouseenter",
+    () => {
+      cursor.style.opacity = "1";
+    },
+    { passive: true },
+  );
 }

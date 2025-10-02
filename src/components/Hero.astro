@@ -1,5 +1,6 @@
 ---
 import bitmoji from "../assets/bitmoji_pb.webp";
+import profilePicture from "../assets/profilbillede.webp";
 ---
 
 <div class="hero-wrapper" id="start">
@@ -7,7 +8,8 @@ import bitmoji from "../assets/bitmoji_pb.webp";
     <div class="hej-bar flex">
       <div class="flex">
         <div class="pb-box">
-          <img src={bitmoji.src} alt="" />
+          <img class="img1" src={bitmoji.src} alt="" />
+          <img class="img2" src={profilePicture.src} alt="" />
         </div>
         <div class="hej-bar-content flex-col">
           <h1>Hey, mit navn er Marcus</h1>
@@ -113,20 +115,36 @@ import bitmoji from "../assets/bitmoji_pb.webp";
       border-radius: var(--border-radius);
       border: 2px solid var(--primary-color);
       overflow: hidden;
+      position: relative;
+
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .img1 {
         transform: translateY(7px);
+        opacity: 1;
+        z-index: 2;
+      }
+
+      .img2 {
+        transform: translateY(0px);
+        opacity: 0;
+        z-index: 1;
       }
     }
     .pb-box:hover {
-      animation: rotate 0.5s linear infinite;
-    }
-
-    @keyframes rotate {
-      to {
-        transform: translate3d(0, 0, 60px);
+      .img1 {
+        opacity: 0;
+      }
+      .img2 {
+        opacity: 1;
       }
     }
 
